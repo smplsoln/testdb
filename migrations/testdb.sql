@@ -81,3 +81,34 @@ VALUES ('fluffy', 99);
 
 DELETE FROM users WHERE id = 1;
 
+INSERT INTO users
+VALUES (1, 'John', 1999, Now());
+
+INSERT INTO users
+VALUES (2, 'Anna', 2009, Now());
+
+INSERT INTO pets (name, owner_id)
+VALUES ('mittens', 1);
+
+INSERT INTO pets (name, owner_id)
+VALUES ('fluffy', 2);
+
+DELETE FROM pets
+WHERE id = 1;
+
+
+DELETE FROM users
+WHERE id = 1;
+
+UPDATE users
+SET name='Mica', birth_year=2002, member_since=Now()
+WHERE id = ( SELECT owner_id FROM pets where name='fluffy' )
+;
+
+UPDATE users
+SET name='Liu', birth_year=2010, member_since=Now()
+WHERE id = ( SELECT owner_id FROM pets where name='mittens' )
+;
+
+
+
